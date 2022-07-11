@@ -13,8 +13,8 @@ public class Knapsack_01_TopDown {
 
     for (int i = 1; i < N + 1; i++) {
       for (int j = 1; j < W + 1; j++) {
-        if (wt[i - 1] <= W) {
-          dp[i][j] = Math.max(val[i - 1] + dp[i - 1][W - wt[i - 1]], dp[i - 1][j]);
+        if (wt[i - 1] <= j) {
+          dp[i][j] = Math.max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]);
         } else {
           dp[i][j] = dp[i - 1][j];
         }
