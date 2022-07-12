@@ -1,4 +1,4 @@
-public class Coin_Change_Min_No_Of_Coin_With_GIven_Sum {
+public class Coin_Change_2_Min_No_Of_Coin_With_GIven_Sum {
 
   public static int minCoins(int coin[], int n, int sum) {
     int dp[][] = new int[n + 1][sum + 1];
@@ -11,14 +11,6 @@ public class Coin_Change_Min_No_Of_Coin_With_GIven_Sum {
         if (j == 0) {
           dp[i][j] = 0;
         }
-      }
-    }
-
-    for (int i = 1, j = 1; j < sum + 1; j++) {
-      if (j % coin[0] == 0) {
-        dp[i][j] = j / coin[0];
-      } else {
-        dp[i][j] = Integer.MAX_VALUE - 1;
       }
     }
 
