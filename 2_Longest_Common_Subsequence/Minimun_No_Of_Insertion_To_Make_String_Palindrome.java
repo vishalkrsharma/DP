@@ -1,6 +1,6 @@
-public class Longest_Common_Palindromic_Subsquence {
+public class Minimun_No_Of_Insertion_To_Make_String_Palindrome {
 
-  public static int subseq(String x, String y, int n, int m) {
+  public static int insert(String x, String y, int n, int m) {
     int dp[][] = new int[n + 1][m + 1];
 
     for (int i = 0; i < n + 1; i++) {
@@ -20,8 +20,7 @@ public class Longest_Common_Palindromic_Subsquence {
         }
       }
     }
-
-    return dp[n][m];
+    return n - dp[n][m];
   }
 
   public static String reverse(String s) {
@@ -29,15 +28,16 @@ public class Longest_Common_Palindromic_Subsquence {
     for (int i = s.length() - 1; i >= 0; i--) {
       ans += s.charAt(i);
     }
+
     return ans;
   }
 
   public static void main(String[] args) {
-    String x = "agbcba";
-    String y = reverse(x);
 
+    String x = "aebcbda";
     int n = x.length();
-    int m = y.length();
-    System.out.println(subseq(x, y, n, m));
+
+    System.out.println(insert(x, reverse(x), n, n));
+
   }
 }
