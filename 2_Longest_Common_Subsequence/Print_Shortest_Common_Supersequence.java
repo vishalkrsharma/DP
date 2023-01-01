@@ -23,7 +23,7 @@ class Print_Shortest_Common_Supersequence {
 
     int i = n, j = m;
 
-    while (i > 0 || j > 0) {
+    while (i > 0 && j > 0) {
       if (x.charAt(i - 1) == y.charAt(j - 1)) {
         s = x.charAt(i - 1) + s;
         i--;
@@ -41,18 +41,20 @@ class Print_Shortest_Common_Supersequence {
 
     while (i > 0) {
       s = x.charAt(i - 1) + s;
+      i--;
     }
 
     while (j > 0) {
       s = y.charAt(j - 1) + s;
+      j--;
     }
 
     return s;
   }
 
   public static void main(String[] args) {
-    String x = "abcdaf";
-    String y = "acbcf";
+    String x = "AGGTAB";
+    String y = "GXTXAYB";
 
     int n = x.length();
     int m = y.length();
