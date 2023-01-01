@@ -1,4 +1,4 @@
-public class Matrix_Chain_Multiplication_Boolean_Parenthesization {
+public class Boolean_Parenthesization_Recursive {
 
   public static int mcm(String s, int i, int j, boolean isTrue) {
     if (i > j) {
@@ -14,7 +14,7 @@ public class Matrix_Chain_Multiplication_Boolean_Parenthesization {
 
     int ans = 0;
 
-    for (int k = i + 1; k < j; k++) {
+    for (int k = i + 1; k < j; k += 2) {
       int leftTrue = mcm(s, i, k - 1, true);
       int leftFalse = mcm(s, i, k - 1, false);
       int rightTrue = mcm(s, k + 1, j, true);
@@ -22,21 +22,21 @@ public class Matrix_Chain_Multiplication_Boolean_Parenthesization {
 
       if (s.charAt(k) == '^') {
         if (isTrue) {
-          ans += leftTrue * rightFalse + leftFalse * rightTrue;
+          ans += (leftTrue * rightFalse) + (leftFalse * rightTrue);
         } else {
-          ans += leftTrue * rightTrue + leftFalse * rightFalse;
+          ans += (leftTrue * rightTrue) + (leftFalse * rightFalse);
         }
       } else if (s.charAt(k) == '&') {
         if (isTrue) {
-          ans += leftTrue + rightTrue;
+          ans += (leftTrue * rightTrue);
         } else {
-          ans += leftTrue * rightFalse + leftFalse * rightTrue + leftFalse * rightFalse;
+          ans += (leftFalse * rightFalse) + (leftFalse * rightTrue) + (leftTrue * rightFalse);
         }
       } else if (s.charAt(k) == '|') {
         if (isTrue) {
-          ans += leftTrue * rightFalse + leftFalse * rightTrue + leftFalse * rightFalse;
+          ans += (leftTrue * rightTrue) + (leftFalse * rightTrue) + (leftTrue * rightFalse);
         } else {
-          ans += leftTrue + rightTrue;
+          ans += (leftFalse * rightFalse);
         }
       }
     }
