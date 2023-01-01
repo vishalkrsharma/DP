@@ -1,7 +1,7 @@
 public class Longest_Common_Substring {
   public static int lcs(String x, String y, int n, int m) {
     int dp[][] = new int[n + 1][m + 1];
-    int ans = Integer.MIN_VALUE;
+    int ans = 0;
 
     for (int i = 0; i < n + 1; i++) {
       for (int j = 0; j < m + 1; j++) {
