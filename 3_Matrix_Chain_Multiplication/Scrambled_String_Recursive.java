@@ -20,11 +20,11 @@ public class Scrambled_String_Recursive {
     boolean flag = false;
 
     for (int i = 1; i < n; i++) {
-      if (mcm(a.substring(0, i), b.substring(n - i, n)) && mcm(a.substring(i, n - i), b.substring(0, n - i))) {
+      if (mcm(a.substring(0, i), b.substring(0, i)) && mcm(a.substring(i, n), b.substring(i, n))) {
         flag = true;
         break;
       }
-      if (mcm(a.substring(0, i), b.substring(0, i)) && mcm(a.substring(i, n - i), b.substring(i, n - i))) {
+      if (mcm(a.substring(0, i), b.substring(n - i, n)) && mcm(a.substring(i, n), b.substring(0, n - i))) {
         flag = true;
         break;
       }
@@ -33,8 +33,8 @@ public class Scrambled_String_Recursive {
   }
 
   public static void main(String[] args) {
-    String a = "we";
-    String b = "we";
+    String a = "abbbcbaaccacaacc";
+    String b = "acaaaccabcabcbcb";
 
     System.out.println(mcm(a, b));
   }
